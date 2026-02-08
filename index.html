@@ -52,8 +52,8 @@ const img = document.createElement('img');
 const handleClick = (event) => {
  const e = event?.touches?.length > 0 ? event.touches[0] : event;
 
-  const x = event.clientX;
-  const y = event.clientY;
+  const x = e.clientX;
+  const y = e.clientY;
 
   const i = Math.floor(Math.random() * images.length);
   const img = document.createElement('img');
