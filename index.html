@@ -34,7 +34,6 @@ width: 240px;
 <h1>Happy birthday Chaos!!!</h1>
 
 <script>
-
   const images = [
     'IMG_9945.gif',
     'IMG_9946.gif',
@@ -44,28 +43,31 @@ width: 240px;
     'IMG_9950.gif',
   ];
 
-  for (let i = 0; i < images.length; i++) {
-const img = document.createElement('img');
+  // Preload images
+  images.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+
+  const handleClick = (event) => {
+    const e = event.touches && event.touches.length ? event.touches[0] : event;
+
+    const x = e.clientX;
+    const y = e.clientY;
+
+    const i = Math.floor(Math.random() * images.length);
+
+    const img = document.createElement('img');
     img.src = images[i];
-  }
-  
-const handleClick = (event) => {
- const e = event?.touches?.length > 0 ? event.touches[0] : event;
+    img.className = 'img';
+    img.style.left = x + 'px';
+    img.style.top = y + 'px';
 
-  const x = e.clientX;
-  const y = e.clientY;
+    document.body.appendChild(img);
+  };
 
-  const i = Math.floor(Math.random() * images.length);
-  const img = document.createElement('img');
-  img.src = images[i];
-  img.className = 'img';
-  img.style.left = x + 'px';
-  img.style.top = y + 'px';
-  document.body.appendChild(img);
-}
-
-window.addEventListener('click', handleClick);
-  
+  window.addEventListener('click', handleClick);
+  window.addEventListener('touchstart', handleClick, { passive: true });
 </script>
 
     
