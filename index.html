@@ -19,9 +19,56 @@
       h1 {
       font-family: fantasy;
     }
+
+      .img {
+        pointer-events: none;
+width: 240px;
+        height: auto;
+        position: fixed;
+        display: block;
+        transform: translate(-50%,-50%);
+      }
     </style>
   </head>
   <body>
 <h1>Happy birthday Chaos!!!</h1>
+
+<script>
+
+  const images = [
+    './IMG_9946.gif',
+    './IMG_9946.gif',
+    './IMG_9946.gif',
+    './IMG_9946.gif',
+    './IMG_9946.gif',
+    './IMG_9946.gif',
+  ];
+
+  let imgs = [];
+
+  for (let i = 0; i < images.length; i++) {
+const img = document.createElement('img');
+    img.src = images[i];
+  }
+  
+const handleClick = (event) => {
+ const e = event?.touches?.length > 0 ? event.touches[0] : event;
+
+  const x = event.clientX;
+  const y = event.clientY;
+
+  const i = Math.floor(Math.random() * images.length);
+  const img = document.createElement('img');
+  img.src = images[i];
+  img.className = 'img';
+  img.style.left = x + 'px';
+  img.style.top = y + 'px';
+  document.body.appendChild(img);
+}
+  
+</script>
+
+    
   </body>
 </html>
+
